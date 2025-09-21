@@ -1,573 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download UniMatch AI</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            color: #333;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1000px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-        
-        header {
-            background: linear-gradient(to right, #6e8efb, #a777e3);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            animation: fadeIn 1s ease-in;
-        }
-        
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            animation: fadeIn 1.5s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .content {
-            padding: 40px;
-        }
-        
-        .download-section {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .download-btn {
-            display: inline-block;
-            background: linear-gradient(to right, #6e8efb, #a777e3);
-            color: white;
-            padding: 18px 45px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(110, 142, 251, 0.4);
-            transition: all 0.3s ease;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .download-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(110, 142, 251, 0.6);
-        }
-        
-        .download-btn:active {
-            transform: translateY(0);
-        }
-        
-        .download-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0));
-            transform: rotate(30deg);
-            transition: all 0.5s ease;
-        }
-        
-        .download-btn:hover::after {
-            transform: rotate(30deg) translate(10%, 10%);
-        }
-        
-        .download-btn-secondary {
-            display: inline-block;
-            background: linear-gradient(to right, #4CAF50, #2E7D32);
-            color: white;
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
-            transition: all 0.3s ease;
-            margin: 15px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .download-btn-secondary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.6);
-        }
-        
-        .team-btn {
-            display: inline-block;
-            background: transparent;
-            color: #6e8efb;
-            border: 2px solid #6e8efb;
-            padding: 12px 30px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            margin: 15px 0;
-            cursor: pointer;
-        }
-        
-        .team-btn:hover {
-            background: #6e8efb;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(110, 142, 251, 0.4);
-        }
-        
-        .download-info {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 10px;
-        }
-        
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-        
-        .feature {
-            text-align: center;
-            padding: 25px 15px;
-            background: #f8f9ff;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .feature:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature i {
-            font-size: 2.5rem;
-            color: #6e8efb;
-            margin-bottom: 15px;
-        }
-        
-        .feature h3 {
-            margin-bottom: 10px;
-            color: #444;
-        }
-        
-        .instructions {
-            background: #f8f9ff;
-            padding: 25px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-        }
-        
-        .instructions h2 {
-            margin-bottom: 15px;
-            color: #444;
-            text-align: center;
-        }
-        
-        .instructions ol {
-            padding-left: 20px;
-        }
-        
-        .instructions li {
-            margin-bottom: 10px;
-            line-height: 1.6;
-        }
-        
-        .command-window {
-            background: #2d3a4b;
-            color: #00ff00;
-            padding: 15px;
-            border-radius: 5px;
-            font-family: 'Courier New', monospace;
-            margin: 15px 0;
-            overflow-x: auto;
-        }
-        
-        .server-info {
-            background: #e8f4ff;
-            border-left: 4px solid #4dabf7;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        
-        .server-info-header {
-            display: flex;
-            align-items: center;
-            color: #4dabf7;
-            margin-bottom: 10px;
-        }
-        
-        .server-info-header i {
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            animation: fadeIn 0.3s;
-        }
-        
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 700px;
-            max-height: 80vh;
-            overflow-y: auto;
-            animation: slideIn 0.3s;
-            position: relative;
-        }
-        
-        @keyframes slideIn {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .close:hover {
-            color: #333;
-        }
-        
-        .team-section {
-            padding: 20px 0;
-        }
-        
-        .team-section h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #444;
-            position: relative;
-            padding-bottom: 10px;
-        }
-        
-        .team-section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(to right, #6e8efb, #a777e3);
-            border-radius: 3px;
-        }
-        
-        .team-members {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .team-member {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-            position: relative;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-5px);
-        }
-        
-        .team-member h3 {
-            color: #6e8efb;
-            margin-bottom: 10px;
-            border-bottom: 2px solid #6e8efb;
-            padding-bottom: 5px;
-        }
-        
-        .team-member p {
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        
-        .team-member a {
-            color: #0077b5;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-        }
-        
-        .team-member a:hover {
-            color: #005582;
-            text-decoration: underline;
-        }
-        
-        .linkedin-icon {
-            margin-right: 8px;
-            font-size: 1.2rem;
-        }
-        
-        .team-leader {
-            background: linear-gradient(to right, #f8f9ff, #e8f4ff);
-            border: 2px solid #6e8efb;
-        }
-        
-        .team-leader::before {
-            content: 'Team Leader';
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #6e8efb;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: bold;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9rem;
-            border-top: 1px solid #eee;
-        }
-        
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-            
-            .content {
-                padding: 25px;
-            }
-            
-            .download-btn {
-                padding: 15px 35px;
-                font-size: 1.1rem;
-            }
-            
-            .team-members {
-                grid-template-columns: 1fr;
-            }
-            
-            .modal-content {
-                width: 95%;
-                padding: 20px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UniMatch AI Chatbot</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin:0; padding:0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: url('https://i.ibb.co/4wL60v0N/Chat-GPT-Image-Sep-21-2025-03-35-18-AM.png') no-repeat center center fixed;
+  background-size: cover;
+  display: flex; justify-content:center; align-items:center; height:100vh; padding:10px;
+}
+
+#main-container { display:flex; width:100%; max-width:900px; height:90vh; border-radius:20px; overflow:hidden; box-shadow:0 10px 40px rgba(0,0,0,0.3); }
+
+#sidebar { width:30%; background:#2575fc; color:#fff; display:flex; flex-direction:column; padding:15px; overflow-y:auto; }
+#sidebar h2 { font-weight:600; margin-bottom:10px; font-size:18px; }
+#new-chat-btn { background:#fff; color:#2575fc; border:none; padding:8px 12px; margin-bottom:10px; border-radius:12px; cursor:pointer; font-weight:600; transition:0.2s; }
+#new-chat-btn:hover { background:#e0e0e0; }
+
+.chat-item { background: rgba(255,255,255,0.2); padding: 10px 12px; margin-bottom:10px; border-radius:12px; cursor:pointer; position: relative; transition:0.2s; }
+.chat-item:hover { background: rgba(255,255,255,0.35); }
+
+.chat-item .more-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  background: transparent;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  color: #fff;
+}
+.chat-item:hover .more-btn { display: block; }
+
+#chat-container { flex:1; display:flex; flex-direction:column; background: rgba(255,255,255,0.95); border-radius:20px; }
+#chat { flex:1; padding:20px; overflow-y:auto; display:flex; flex-direction:column; gap:14px; min-height:0; }
+.message { padding:12px 20px; border-radius:25px; max-width:75%; font-size:15px; line-height:1.4; word-wrap:break-word; opacity:0; transform:translateY(20px); animation:fadeIn 0.3s forwards; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+.user { align-self:flex-end; background:#2575fc; color:#fff; border-bottom-right-radius:0; }
+.bot { align-self:flex-start; background:#e0e0e0; color:#333; border-bottom-left-radius:0; }
+.bot b { color:#2575fc; }
+@keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+
+#input-container { display:flex; padding:15px; border-top:1px solid #ccc; background:#fafafa; align-items:center; }
+#user-input { flex:1; padding:14px 18px; border:none; outline:none; border-radius:50px; margin-right:12px; background:#f0f0f0; }
+#user-input:focus { background:#e2e2e2; }
+#send-btn { background:#2575fc; color:#fff; border:none; padding:12px 20px; border-radius:50px; cursor:pointer; transition:0.2s; }
+#send-btn:hover { background:#6a11cb; }
+
+.typing { display:inline-block; width:60px; text-align:left; }
+.typing span { display:inline-block;width:8px;height:8px;margin-right:4px;background:#ccc;border-radius:50%;animation:blink 1.4s infinite both;}
+.typing span:nth-child(2){animation-delay:0.2s;} 
+.typing span:nth-child(3){animation-delay:0.4s;}
+@keyframes blink {0%,80%,100%{opacity:0;}40%{opacity:1;}}
+
+#chat::-webkit-scrollbar, #sidebar::-webkit-scrollbar { width:6px; }
+#chat::-webkit-scrollbar-thumb, #sidebar::-webkit-scrollbar-thumb { background:#2575fc; border-radius:3px; }
+#chat::-webkit-scrollbar-track, #sidebar::-webkit-scrollbar-track { background:#f1f1f1; }
+
+@media(max-width:700px){
+  #main-container { flex-direction:column; height:95vh; }
+  #sidebar { width:100%; height:120px; flex-direction:row; overflow-x:auto; }
+  #chat-container { flex:1; }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>UniMatch AI</h1>
-            <p>Intelligent University Matching System</p>
-        </header>
-        
-        <div class="content">
-            <div class="download-section">
-                <h2>Download UniMatch AI Now</h2>
-                <p>Get started with our intelligent university matching system</p>
-                
-                <a href="https://github.com/masimmursaleen-hub/UNI_MATCH_AI/releases/download/v1.0.0/node-v22.19.0-x64.msi" class="download-btn-secondary">
-                    <i class="fas fa-download"></i> First Download Node.js (Required)
-                </a>
-                <p class="download-info">Node.js v22.19.0 | For Windows OS | File size: ~30 MB</p>
-                
-                <a href="https://github.com/masimmursaleen-hub/UNI_MATCH_AI/releases/download/v1.0.0/UniMatch_AI_Setup.exe" class="download-btn">
-                    <i class="fas fa-download"></i> Then Download UniMatch AI
-                </a>
-                <p class="download-info">Version 1.0.0 | For Windows OS | File size: ~35 MB</p>
-                
-                <button class="team-btn" onclick="openModal()">
-                    <i class="fas fa-users"></i> Meet Our Development Team
-                </button>
-            </div>
-            
-            <div class="features">
-                <div class="feature">
-                    <i class="fas fa-brain"></i>
-                    <h3>AI-Powered Matching</h3>
-                    <p>Advanced algorithms to match students with ideal universities</p>
-                </div>
-                
-                <div class="feature">
-                    <i class="fas fa-graduation-cap"></i>
-                    <h3>Comprehensive Database</h3>
-                    <p>Access to thousands of universities worldwide</p>
-                </div>
-                
-                <div class="feature">
-                    <i class="fas fa-user-cog"></i>
-                    <h3>Personalized Results</h3>
-                    <p>Get recommendations based on your profile and preferences</p>
-                </div>
-            </div>
-            
-            <div class="instructions">
-                <h2>Installation Instructions</h2>
-                <ol>
-                    <li>First, download and install Node.js using the green download button above</li>
-                    <li>Then download the UniMatch AI application using the purple download button</li>
-                    <li>Locate the downloaded UniMatch_AI_Setup.exe file</li>
-                    <li>Double-click the file to begin installation</li>
-                    <li>Follow the on-screen instructions to complete installation</li>
-                    <li>Launch the application and start finding your ideal university!</li>
-                </ol>
-                
-                <div class="server-info">
-                    <div class="server-info-header">
-                        <i class="fas fa-server"></i>
-                        <h3>Application Runtime Notice</h3>
-                    </div>
-                    <p>When you open UniMatch AI, a command prompt window will appear showing the local server running on port 5000. <strong>Please do NOT close this window</strong> while using the application.</p>
-                    
-                    <div class="command-window">
-                        * Serving Flask app 'UniMatch_AI'<br>
-                        * Environment: production<br>
-                        * Debug mode: off<br>
-                        * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-                    </div>
-                    
-                    <p>This window represents the local server that powers the application. Closing it will shut down the application. The server will run on <code>http://localhost:5000</code> or <code>http://127.0.0.1:5000</code>.</p>
-                    
-                    <p>When you're done using the application, you can properly close it using the exit option within the application interface, which will automatically close the server window.</p>
-                </div>
-            </div>
-        </div>
-        
-        <footer>
-            <p>&copy; 2023 UniMatch AI. All rights reserved.</p>
-        </footer>
-    </div>
-    
-    <!-- Team Modal -->
-    <div id="teamModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            
-            <div class="team-section">
-                <h2>Development Team</h2>
-                <div class="team-members">
-                    <div class="team-member team-leader">
-                        <h3>MUHAMMAD ASIM</h3>
-                        <p><strong>Degree:</strong> BS Electrical Engineering</p>
-                        <p><strong>Institution:</strong> NUST CEME</p>
-                        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/muhammad-asim-f12/" target="_blank"><i class="fab fa-linkedin linkedin-icon"></i>muhammad-asim-f12</a></p>
-                    </div>
-                    
-                    <div class="team-member">
-                        <h3>RAJED MEHMOOD</h3>
-                        <p><strong>Degree:</strong> BS Electrical Engineering</p>
-                        <p><strong>Institution:</strong> UET Lahore</p>
-                        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/rajedmehmood" target="_blank"><i class="fab fa-linkedin linkedin-icon"></i>rajedmehmood</a></p>
-                    </div>
-                    
-                    <div class="team-member">
-                        <h3>HAMZA FIROZ</h3>
-                        <p><strong>Degree:</strong> BS Electrical Engineering</p>
-                        <p><strong>Institution:</strong> NUST CEME</p>
-                        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/hamza-fairoz-708846057" target="_blank"><i class="fab fa-linkedin linkedin-icon"></i>hamza-fairoz-708846057</a></p>
-                    </div>
-                    
-                    <div class="team-member">
-                        <h3>ARIHA HAMEED</h3>
-                        <p><strong>Degree:</strong> BS Mechatronics Engineering</p>
-                        <p><strong>Institution:</strong> NUST CEME</p>
-                        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/ariha-hameed-005718372" target="_blank"><i class="fab fa-linkedin linkedin-icon"></i>ariha-hameed-005718372</a></p>
-                    </div>
-                    
-                    <div class="team-member">
-                        <h3>HAJRA JAMAL</h3>
-                        <p><strong>Degree:</strong> BS Electrical Engineering</p>
-                        <p><strong>Institution:</strong> NUST CEME</p>
-                        <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/hajra-jamal" target="_blank"><i class="fab fa-linkedin linkedin-icon"></i>hajra-jamal</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <script>
-        // Modal functionality
-        function openModal() {
-            document.getElementById('teamModal').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-        }
-        
-        function closeModal() {
-            document.getElementById('teamModal').style.display = 'none';
-            document.body.style.overflow = 'auto'; // Re-enable scrolling
-        }
-        
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById('teamModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-        
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
-    </script>
+<div id="main-container">
+  <div id="sidebar">
+    <h2>Chats</h2>
+    <button id="new-chat-btn">+ New Chat</button>
+    <div id="chat-list"></div>
+  </div>
+  <div id="chat-container">
+    <div id="chat"></div>
+    <div id="input-container">
+      <input type="text" id="user-input" placeholder="Enter your interests, marks, and city..." />
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const chat = document.getElementById("chat");
+const input = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
+const chatList = document.getElementById("chat-list");
+const newChatBtn = document.getElementById("new-chat-btn");
+
+let chats = JSON.parse(localStorage.getItem("chats") || "[]");
+let currentChatIndex = chats.length ? chats.length - 1 : 0;
+
+function renderSidebar() {
+  chatList.innerHTML = "";
+  chats.slice().reverse().forEach((session, reverseIdx) => {
+    const idx = chats.length - 1 - reverseIdx;
+    if (!session.length) return;
+    const lastMsg = session[session.length - 1].message || "New Chat";
+    const chatItem = document.createElement("div");
+    chatItem.classList.add("chat-item");
+    chatItem.textContent = lastMsg.slice(0, 30) + "...";
+
+    const moreBtn = document.createElement("button");
+    moreBtn.classList.add("more-btn");
+    moreBtn.textContent = "⋮";
+    moreBtn.addEventListener("click", e => {
+      e.stopPropagation();
+      if (confirm("Are you sure you want to delete this chat?")) {
+        chats.splice(idx, 1);
+        saveChats();
+        if (currentChatIndex === idx) chat.innerHTML = "";
+      }
+    });
+
+    chatItem.appendChild(moreBtn);
+
+    chatItem.dataset.index = idx;
+    chatItem.addEventListener("click", () => {
+      currentChatIndex = idx;
+      loadChat(idx);
+    });
+    chatList.appendChild(chatItem);
+  });
+}
+
+function loadChat(index) {
+  chat.innerHTML = "";
+  chats[index].forEach(msg => appendMessage(msg.message, msg.type));
+}
+
+function saveChats() {
+  localStorage.setItem("chats", JSON.stringify(chats));
+  renderSidebar();
+}
+
+function appendMessage(message, type) {
+  const msgDiv = document.createElement("div");
+  msgDiv.classList.add("message", type);
+
+  if (type === "bot") {
+    msgDiv.innerHTML = formatBotReply(message); // ORGANIZED BOT REPLY
+  } else {
+    msgDiv.textContent = message;
+  }
+
+  chat.appendChild(msgDiv);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+// Format bot replies into organized AI style
+function formatBotReply(text) {
+  // Headings
+  text = text.replace(/^## (.*$)/gim, "<h3>📌 $1</h3>");
+  text = text.replace(/^# (.*$)/gim, "<h2>✨ $1</h2>");
+
+  // Bold
+  text = text.replace(/\*\*(.*?)\*\*/gim, "<b>$1</b>");
+
+  // Bullets
+  if (text.includes("- ")) {
+    text = "<ul>" + text.replace(/- (.*)/gim, "<li>✅ $1</li>") + "</ul>";
+  }
+
+  // Line breaks
+  text = text.replace(/\n/g, "<br>");
+
+  return text;
+}
+
+function showTyping() {
+  const typingDiv = document.createElement("div");
+  typingDiv.classList.add("message", "bot");
+  typingDiv.innerHTML = '<div class="typing"><span></span><span></span><span></span></div>';
+  chat.appendChild(typingDiv);
+  chat.scrollTop = chat.scrollHeight;
+  return typingDiv;
+}
+
+async function sendMessage() {
+  const userMessage = input.value.trim();
+  if (!userMessage) return;
+
+  if (!chats[currentChatIndex]) chats[currentChatIndex] = [];
+  chats[currentChatIndex].push({ message: userMessage, type: "user" });
+  appendMessage(userMessage, "user");
+  input.value = "";
+  saveChats();
+
+  const typingDiv = showTyping();
+
+  try {
+    const history = chats[currentChatIndex].map(msg => ({
+      role: msg.type === "user" ? "user" : "assistant",
+      content: msg.message
+    }));
+
+    const response = await fetch("http://localhost:5000/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ history })
+    });
+
+    const data = await response.json();
+    typingDiv.remove();
+
+    if (data.reply) {
+      appendMessage(data.reply, "bot");
+      chats[currentChatIndex].push({ message: data.reply, type: "bot" });
+      saveChats();
+    } else {
+      appendMessage("Sorry, no response from server.", "bot");
+    }
+
+  } catch (err) {
+    console.error(err);
+    typingDiv.remove();
+    appendMessage("❌ Sorry, server is not responding. Try again later.", "bot");
+  }
+}
+
+sendBtn.addEventListener("click", sendMessage);
+input.addEventListener("keypress", e => { if (e.key === "Enter") sendMessage(); });
+
+newChatBtn.addEventListener("click", () => {
+  chats.push([]);
+  currentChatIndex = chats.length - 1;
+  chat.innerHTML = "";
+  appendMessage(
+    "👋 Hello! I am UniMatch AI.<br>Tell me your **interests**, **marks**, and **city**, and I will suggest the best fields and universities for you.",
+    "bot"
+  );
+  saveChats();
+});
+
+// Initial load
+if (!chats.length) {
+  chats.push([]);
+  currentChatIndex = 0;
+  appendMessage(
+    "👋 Hello! I am UniMatch AI.<br>Tell me your **interests**, **marks**, and **city**, and I will suggest the best fields and universities for you.",
+    "bot"
+  );
+  saveChats();
+} else {
+  renderSidebar();
+  loadChat(currentChatIndex);
+}
+</script>
+
 </body>
 </html>
